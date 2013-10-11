@@ -33,5 +33,5 @@ $(function(){
     }, function(progress){
         output.text("Uploading... ("+progress+"%)");
     });
-});
+  });
 })

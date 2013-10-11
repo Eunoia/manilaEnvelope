@@ -4,7 +4,7 @@
   %tr
     %th Case number
     %th Filepicker url
-    %th Uploader
+    %th User
     %th Date opened
     %th Case name
     %th Paid
@@ -16,7 +16,7 @@
     %tr
       %td= document.case_number
       %td= document.filepicker_url
-      %td= document.uploader
+      %td= document.user.try(:email)
       %td= document.date_opened
       %td= document.case_name
       %td= document.paid
