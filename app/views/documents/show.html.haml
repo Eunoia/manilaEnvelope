@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Case number:
+  = @document.case_number
+%p
+  %b Filepicker url:
+  = @document.filepicker_url
+%p
+  %b Uploader:
+  = @document.uploader
+%p
+  %b Date opened:
+  = @document.date_opened
+%p
+  %b Case name:
+  = @document.case_name
+%p
+  %b Paid:
+  = @document.paid
+
+= link_to 'Edit', edit_document_path(@document)
+\|
+= link_to 'Back', documents_path

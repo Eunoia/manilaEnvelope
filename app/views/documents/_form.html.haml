@@ -1,0 +1,28 @@
+= form_for @document do |f|
+  - if @document.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@document.errors.count, "error")} prohibited this document from being saved:"
+      %ul
+        - @document.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :case_number
+    = f.text_field :case_number
+  .field
+    = f.label :filepicker_url
+    = f.filepicker_field :filepicker_url
+  .field
+    = f.label :uploader
+    = f.text_field :uploader
+  .field
+    = f.label :date_opened
+    = f.datetime_select :date_opened
+  .field
+    = f.label :case_name
+    = f.text_field :case_name
+  .field
+    = f.label :paid
+    = f.check_box :paid
+  .actions
+    = f.submit 'Save'
