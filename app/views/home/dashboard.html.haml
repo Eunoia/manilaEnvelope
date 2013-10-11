@@ -1,0 +1,7 @@
+%h1
+  Dashboard
+
+%h3
+  Account Status
+  = current_user.to_json
+= link_to 'Upload new document', new_document_path
