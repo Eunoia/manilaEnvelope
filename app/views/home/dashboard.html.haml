@@ -3,5 +3,20 @@
 
 %h3
   Account Status
-  = current_user.to_json
-= link_to 'Upload new document', new_document_path
+%div
+  Task Limit: 
+  = current_user.task_limit
+%div
+  Documents:
+  = current_user.documents.length
+%div
+  Paid out:
+  = "$"+(current_user.documents.select{ |d| d.paid }.length * 5).to_s
+%h3 Account Details
+%div
+  Email:
+  = current_user.email
+%div
+  = link_to "Edit your details", edit_user_registration_path
+%hr
+= link_to 'Upload new document', new_document_path, class: 'btn'

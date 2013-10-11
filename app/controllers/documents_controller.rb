@@ -14,6 +14,11 @@ class DocumentsController < ApplicationController
 
   # GET /documents/new
   def new
+    if current_user.task_limit < current_user.documents.length
+      flash[:error] = "In order to ensure fairness, I am checking the documents that you have uploaded. Once I have verified that they are in order, I will pay you via the email address that you have provided, and raise the limit of the number of documents you can upload."
+      redirect_to dashboard_path
+      return
+    end
     @document = Document.new
     render :new2
   end
