@@ -11,7 +11,11 @@
     = f.text_field :case_number
   .field
     = f.label :filepicker_url
-    = f.filepicker_field :filepicker_url
+    = f.hidden_field :filepicker_url
+    %input#ajaxUpload{type:"file"}
+    /= f.filepicker_field :filepicker_url, onchange: "foo()", services: "COMPUTER", dragdrop: false
+    #uploadFinished
+      foo
   .field
     = f.label :uploader
     = f.text_field :uploader
@@ -20,6 +24,6 @@
     = f.datetime_select :date_opened
   .field
     = f.label :case_name
-    = f.text_field :case_name
+    = f.text_field :case_name, placeholder: "Estate of ......"
   .actions
     = f.submit 'Save'
