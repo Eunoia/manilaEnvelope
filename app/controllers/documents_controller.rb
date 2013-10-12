@@ -75,6 +75,6 @@ class DocumentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
-      params.require(:document).permit(:case_number, :filepicker_url, :uploader, :date_opened, :case_name, :paid)
+      params.require(:document).permit(:case_number, :filepicker_url, :date_opened, :case_name, :paid)
     end
 end
