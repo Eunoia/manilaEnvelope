@@ -1,4 +1,6 @@
 ManilaEnvelope::Application.routes.draw do
+  resources :blogs
+
   devise_for :users
   resources :documents
 
