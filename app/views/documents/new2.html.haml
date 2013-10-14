@@ -15,10 +15,10 @@
     %input#ajaxUpload{type:"file"}
     /= f.filepicker_field :filepicker_url, onchange: "foo()", services: "COMPUTER", dragdrop: false
     #uploadFinished
-      foo
+      &nbsp;
   .field
     = f.label :date_opened
-    = f.datetime_select :date_opened
+    = f.text_field :date_opened, {"id"=>"datepicker"}
   .field
     = f.label :case_name
     = f.text_field :case_name, placeholder: "Estate of ......"

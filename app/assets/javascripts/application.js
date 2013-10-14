@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require turbolinks
 //= require_tree .
 
 
@@ -32,6 +31,7 @@ function foo(a,b,c,d,e) {
 $(function(){
   // $("#document_filepicker_url").change(foo)
   // filepicker.setKey = 'AuHpQGwSCWmZPeeoHTdigz'
+  $('#datepicker').datepicker()
   $('#ajaxUpload').change(function(){
     var output = $("#uploadFinished").show();
     filepicker.store(this, {location: 'S3'}, function(InkBlob){
@@ -43,4 +43,5 @@ $(function(){
         output.text("Uploading... ("+progress+"%)");
     });
   });
+  
 })
