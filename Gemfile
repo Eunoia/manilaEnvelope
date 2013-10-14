@@ -19,7 +19,7 @@ group :development do
   gem 'html2haml'
   gem 'hub', :require=>nil
   gem 'rails_layout'
-  # gem 'mailcatcher'
+  gem 'pry'
 end
 group :production do
   gem 'rails_12factor'
