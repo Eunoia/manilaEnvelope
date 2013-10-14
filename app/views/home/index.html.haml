@@ -1,4 +1,6 @@
 %h1 Welcome to Manila Envelope. 
+%div
+  = raw @blog.body
 - if current_user
   = link_to 'Upload new document', new_document_path, class: 'btn'
 - else

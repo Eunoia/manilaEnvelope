@@ -1,6 +1,12 @@
 %p#notice= notice
 
 %p
+  = link_to 'Prev', blog_path(@prev)
+  |
+
+  = link_to 'Next', blog_path(@next)
+
+%p
   %b Title:
   = @blog.title
 %p

@@ -10,6 +10,11 @@ class BlogsController < ApplicationController
   # GET /blogs/1
   # GET /blogs/1.json
   def show
+    name = @blog.name
+    blogs = Blog.where(name: name).all
+    index = blogs.index{ |f| f.id == @blog.id }
+    @next = blogs[index + 1]
+    @prev = blogs[index - 1]
   end
 
   # GET /blogs/new
@@ -43,7 +48,8 @@ class BlogsController < ApplicationController
   # PATCH/PUT /blogs/1.json
   def update
     respond_to do |format|
-      if @blog.update(blog_params)
+      @blog = Blog.new(blog_params)
+      if @blog.save
         format.html { redirect_to @blog, notice: 'Blog was successfully updated.' }
         format.json { head :no_content }
       else

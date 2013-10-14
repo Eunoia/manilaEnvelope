@@ -2,6 +2,7 @@
 
 %table
   %tr
+    %th Id
     %th Title
     %th Body
     %th Name
@@ -13,6 +14,7 @@
 
   - @blogs.each do |blog|
     %tr
+      %td= blog.id
       %td= blog.title
       %td= blog.body
       %td= blog.name
