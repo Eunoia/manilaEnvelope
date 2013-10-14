@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_filter :only_show_to_mods
 
   # GET /blogs
   # GET /blogs.json
@@ -78,5 +79,11 @@ class BlogsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def blog_params
       params.require(:blog).permit(:title, :body, :name, :language, :user_id)
+    end
+
+    def only_show_to_mods
+      authenticate_user! if current_user.nil?
+      redirect_to "/dashboard" if current_user.id!=1
+      # return current_user.id==1 ? true : false
     end
 end

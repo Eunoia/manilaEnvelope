@@ -5,11 +5,15 @@ class DocumentsController < ApplicationController
   # GET /documents.json
   def index
     @documents = Document.all
+    if current_user.id!=1
+      @documents = @documents.select{ |d| d.user == current_user }
+    end
   end
 
   # GET /documents/1
   # GET /documents/1.json
   def show
+    only_show_own_documents
   end
 
   # GET /documents/new
@@ -76,5 +80,11 @@ class DocumentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
       params.require(:document).permit(:case_number, :filepicker_url, :date_opened, :case_name, :paid)
+    end
+
+    def only_show_own_documents
+      if @document.user!=current_user
+        redirect_to dashboard_path, notice:"You can only see documents that you have uploaded"
+      end
     end
 end
