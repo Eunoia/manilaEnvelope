@@ -10,7 +10,10 @@
     = f.label :case_number
     = f.text_field :case_number
   .field
-    = f.label "PDF"
+    = f.label "Document"
+    - if !@document.filepicker_url.nil?
+      = link_to "Click here to review document", @document.filepicker_url
+      %br
     = f.hidden_field :filepicker_url
     %input#ajaxUpload{type:"file"}
     /= f.filepicker_field :filepicker_url, onchange: "foo()", services: "COMPUTER", dragdrop: false
@@ -23,4 +26,4 @@
     = f.label :case_name
     = f.text_field :case_name
   .actions
-    = f.submit 'Save'
+    %button.btn.btn-default Save Document

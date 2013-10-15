@@ -35,8 +35,9 @@ $(function(){
   $('#ajaxUpload').change(function(){
     var output = $("#uploadFinished").show();
     filepicker.store(this, {location: 'S3'}, function(InkBlob){
-        $("#document_filepicker_url").val(InkBlob.url)
-        output.html('Uploaded: '+InkBlob.filename+'');
+        $("#document_filepicker_url").val(InkBlob.url);
+        $("#saveButton").removeAttr("disabled")
+        output.html('Uploaded: <a href="'+InkBlob.url+'">'+InkBlob.filename+'</a>');
     }, function(fperror){
         output.text(fperror.toString());
     }, function(progress){

@@ -1,3 +1,6 @@
+%h3
+  Create Document
+
 = form_for @document do |f|
   - if @document.errors.any?
     #error_explanation
@@ -8,9 +11,9 @@
 
   .field
     = f.label :case_number
-    = f.text_field :case_number
+    = f.text_field :case_number, {required:"required"}
   .field
-    = f.label :filepicker_url
+    = f.label "Upload Document"
     = f.hidden_field :filepicker_url
     %input#ajaxUpload{type:"file"}
     /= f.filepicker_field :filepicker_url, onchange: "foo()", services: "COMPUTER", dragdrop: false
@@ -18,9 +21,10 @@
       &nbsp;
   .field
     = f.label :date_opened
-    = f.text_field :date_opened, {"id"=>"datepicker"}
+    = f.text_field :date_opened, {"id"=>"datepicker",required:"required"}
   .field
     = f.label :case_name
-    = f.text_field :case_name, placeholder: "Estate of ......"
+    = f.text_field :case_name, placeholder: "Estate of ......", required:"required"
   .actions
-    = f.submit 'Save'
+    %button#saveButton.btn.btn-default{disabled:"disabled"} Save Document
+
