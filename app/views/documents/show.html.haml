@@ -1,20 +1,20 @@
 %p#notice= notice
 
+%h2
+  = @document.case_name
+
 %p
   %b Case number:
   = @document.case_number
 %p
-  %b Filepicker url:
-  = @document.filepicker_url
+  %b Link to PDF:
+  = link_to "Click Here", @document.filepicker_url
 %p
   %b Date opened:
-  = @document.date_opened
+  = @document.date_opened.strftime("%m/%d/%y")
 %p
-  %b Case name:
-  = @document.case_name
-%p
-  %b Paid:
-  = @document.paid
+  %b Status:
+  = @document.paid ? "Paid" : "under review"
 
 = link_to 'Edit', edit_document_path(@document)
 \|

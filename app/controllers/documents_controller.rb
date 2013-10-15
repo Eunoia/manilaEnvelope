@@ -34,8 +34,9 @@ class DocumentsController < ApplicationController
   # POST /documents
   # POST /documents.json
   def create
-    @document = Document.new(document_params)
-    @document.date_opened = DateTime.strptime(params[:document][:date_opened], '%m/%d/%Y').to_date
+    d_params = document_params.clone
+    d_params[:date_opened] = DateTime.strptime(params[:document][:date_opened], '%m/%d/%Y').to_date
+    @document = Document.new(d_params)
     @document.user = current_user
     respond_to do |format|
       if @document.save

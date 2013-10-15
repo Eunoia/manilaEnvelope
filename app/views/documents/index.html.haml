@@ -1,29 +1,27 @@
 %h1 Listing documents
 
-%table
+%table.table.table-hover
   %tr
     %th Case number
-    %th Filepicker url
-    %th User
+    %th Document
     %th Date opened
     %th Case name
-    %th Paid
+    %th Status
     %th Is on Mailing list
     %th
     %th
     %th
-
-  - @documents.each do |document|
-    %tr
-      %td= document.case_number
-      %td= document.filepicker_url
-      %td= document.user.try(:email)
-      %td= document.date_opened
-      %td= document.case_name
-      %td= document.paid
-      %td= link_to 'Show', document
-      %td= link_to 'Edit', edit_document_path(document)
-      %td= link_to 'Destroy', document, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  %tbody
+    - @documents.each do |document|
+      %tr
+        %td= document.case_number
+        %td= link_to "Click to view PDF", document.filepicker_url
+        %td= document.date_opened.strftime("%m/%d/%y")
+        %td= document.case_name
+        %td= document.paid ? "Paid" : "Under Review"
+        %td= link_to 'Show', document
+        %td= link_to 'Edit', edit_document_path(document)
+        %td= link_to 'Destroy', document, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
